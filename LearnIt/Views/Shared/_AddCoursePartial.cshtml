@@ -1,0 +1,15 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<UserDataModel> SignInManager
+@inject UserManager<UserDataModel> UserManager
+
+@{
+    var user = ViewBag.User is null ? ViewData["User"] : ViewBag.User;
+}
+
+@if (SignInManager.IsSignedIn(User) && !user.isStudent)
+{
+    <a class="add-course" asp-area="" asp-controller="Course" asp-action="AddCourse">
+        Add Course
+    </a>
+}
+

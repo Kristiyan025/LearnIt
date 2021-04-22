@@ -1,0 +1,67 @@
+﻿
+
+/*  Contacts  */
+
+
+.contacts-container 
+{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    margin-top: 80px;
+}
+
+.info-wrapper 
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 30px 0 80px;
+}
+
+.street-view 
+{
+    width: 30%;
+    height: auto;
+    border: 10px inset #507eff;
+    border-radius: 30px;
+}
+
+.info-wrapper .info
+{
+    --font-size: 27px;
+    width: 50%;
+    height: calc(8 * var(--font-size));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contacts-info 
+{
+    font-size: var(--font-size);
+    word-wrap: break-word;
+    font-family: var(--header-font);
+}
+
+.contacts-info span
+{
+    font-style: italic;
+}
+
+.map-wrapper 
+{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 50px;
+}
+
+.street-map 
+{
+    width: 80%;
+    height: 30rem;
+    margin: 30px auto;
+}

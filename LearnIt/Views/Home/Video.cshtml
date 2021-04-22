@@ -1,0 +1,42 @@
+﻿@using LearnIt.DateFormater
+
+@{
+    ViewData["Title"] = $"{ViewBag.Course.Name} Video";
+}
+
+@section VideoCss
+{
+    <link href="@Url.Content("~/css/video.css")" rel="stylesheet" type="text/css" />
+}
+
+<section class="video">
+    <section class="wrapper">
+        <section class="video-content">
+            <h1>
+                @($"{(ViewBag.Index + 1):D2}. {ViewBag.Course.Name}: {ViewBag.Lecture.Name} - {DateFormater.Format(ViewBag.Lecture.StartDate)}")
+            </h1>
+            <iframe src="@ViewBag.Lecture.VideoLink" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe> 
+        </section>
+        <section class="other-links">
+            <h1>
+                Maybe you want to watch some of the other videos in the course:
+            </h1>
+            <ul class="video-links">
+                @{
+                    int count = 3;
+                }
+                @for (int i = Math.Max(ViewBag.Index - count, 0); i <= Math.Min(ViewBag.Index + count, ViewBag.Lectures.Count - 1); i++)
+                {
+                    @if (i != ViewBag.Index)
+                    {
+                        <li class="video-link">
+                            <a asp-area="" asp-controller="Home" asp-action="Video" asp-route-id="@ViewBag.Lectures[i].Id">
+                                @($"{(i + 1):D2}. {ViewBag.Lectures[i].Name}")
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+        </section>
+    </section>
+</section>

@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Contacts";
+}
+
+@section ContactsCss{
+    <link href="@Url.Content("~/css/contacts.css")" rel="stylesheet" type="text/css" />
+}
+
+<section class="contacts-container">
+    <section class="info-wrapper">
+        <img class="street-view" src="/images/contacts/street-view.jpg" alt="Street View" />
+        <section class="info">
+            <h1 class="contacts-info">Telephone: <span><a href="tel:+359878362689">+359 878 362 689</a></span></h1>
+            <h1 class="contacts-info">Email: <span><a href="mailto:agentavery@sample.com">learn-it-bulgaria@gmail.com</a></span></h1>
+            <h1 class="contacts-info">Address: <span><address>bulevard "Cherni vrah" 25, 1000 g.k. Lozenets, Sofia</address></span></h1>
+        </section>
+    </section>
+    <section class="map-wrapper">
+        <iframe class="street-map" allowfullscreen="" loading="lazy" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2933.2312814814627!2d23.32179855844372!3d42.6776429378276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa85072e3ef37d%3A0xfe74cdf7f75f1c07!2sbulevard%20%22Cherni%20vrah%22%2025%2C%201000%20g.k.%20Lozenets%2C%20Sofia!5e0!3m2!1sen!2sbg!4v1615913591607!5m2!1sen!2sbg"></iframe>
+    </section>
+</section>

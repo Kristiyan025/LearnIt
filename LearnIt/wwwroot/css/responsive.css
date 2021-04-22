@@ -1,0 +1,12 @@
+@media all and (max-width: 1250px)
+{
+    .nav-logo
+    {
+        margin-left: 30px;
+    }
+
+    .nav-bar
+    {
+        margin-right: 30px;
+    }
+}

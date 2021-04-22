@@ -1,0 +1,52 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+@section LogInCss{
+    <link href="@Url.Content("~/css/form.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="log-form first-section">
+    <div class="log-form-wrapper">
+        <form id="UpdateInfo" method="post">
+            <h4>
+                Log into an account
+            </h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger all-mistakes"></div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Input.Username"></label>
+                <input asp-for="Input.Username" class="form-input" />
+                <span asp-validation-for="Input.Username" class="text-danger mistake"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-input" />
+                <span asp-validation-for="Input.Password" class="text-danger mistake"></span>
+            </div>
+            <div class="form-group check">
+                <div class="checkbox">
+                    <label class="form-label" asp-for="Input.RememberMe">
+                        <input asp-for="Input.RememberMe" class="remember-me" />
+                        @Html.DisplayNameFor(m => m.Input.RememberMe)
+                    </label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                Log in
+            </button>
+            <p class="go-to-register">
+                <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">
+                    Register as a new user
+                </a>
+            </p>           
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

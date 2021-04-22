@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<UserDataModel> SignInManager
+@inject UserManager<UserDataModel> UserManager
+@model string
+
+@{
+    var user = ViewBag.User is null ? ViewData["User"] : ViewBag.User;
+}
+
+@if (SignInManager.IsSignedIn(User) && !user.isStudent &&
+   ((List<CourseDataModel>)ViewBag.MyCourses).Where(x => x.Id == Model).Count() == 1)
+{
+    <a class="add-lecture" asp-area="" asp-controller="Lecture" asp-action="AddLecture" asp-route-id="@Model">
+        Add Lecture
+    </a>
+}

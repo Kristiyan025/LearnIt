@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-LearnIt-2BD50E45-3CAF-43B7-8308-38FEAB8E8126</UserSecretsId>
+    <ApplicationIcon>L.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20210319170546_FixingTableRelations.cs" />
+    <Compile Remove="Data\Migrations\20210319170546_FixingTableRelations.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210319230532_AdjustingTableKeys.cs" />
+    <Compile Remove="Data\Migrations\20210319230532_AdjustingTableKeys.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210319231004_FixingForeignKeyConstraint.cs" />
+    <Compile Remove="Data\Migrations\20210319231004_FixingForeignKeyConstraint.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210319232954_FixingCourseLecturesForeignKeyConstraint.cs" />
+    <Compile Remove="Data\Migrations\20210319232954_FixingCourseLecturesForeignKeyConstraint.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210319233940_AddReverseRelation.cs" />
+    <Compile Remove="Data\Migrations\20210319233940_AddReverseRelation.Designer.cs" />
+    <Compile Remove="Data\Migrations\20210322011253_SkipDuplicatesInUserExtension.cs" />
+    <Compile Remove="Data\Migrations\20210322011253_SkipDuplicatesInUserExtension.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\bae1bfe7-22c3-4f81-a238-adc35bdbeb51.jpg" />
+    <None Include="wwwroot\images\index\3d-background.jpg" />
+    <None Include="wwwroot\images\index\3d_triangles_web_background.jpg" />
+    <None Include="wwwroot\images\index\bg.jpg" />
+    <None Include="wwwroot\images\index\html-tutorial-beginners-header.jpg" />
+    <None Include="wwwroot\images\index\laptop-background.jpg" />
+    <None Include="wwwroot\images\index\light-background.jpg" />
+    <None Include="wwwroot\images\index\msg-icon.png" />
+    <None Include="wwwroot\images\index\online-courses-tutorials-icon.jpg" />
+    <None Include="wwwroot\images\index\united-business-team.jpg" />
+    <None Include="wwwroot\images\index\website-design-background-1.jpg" />
+    <None Include="wwwroot\images\index\wood.jpg" />
+    <None Include="wwwroot\images\logo.png" />
+    <None Include="wwwroot\images\sq.png" />
+    <None Include="wwwroot\images\svg\hexagonal-pattern.svg" />
+    <None Include="wwwroot\images\svg\line-background.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.13">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+</Project>

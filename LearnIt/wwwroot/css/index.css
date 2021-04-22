@@ -1,0 +1,170 @@
+﻿
+
+/*  Index  */
+
+
+.site-description::before 
+{
+    background-image: 
+            url("../images/index/laptop-background.jpg"), 
+            linear-gradient(rgba(255, 255, 255, 0.432), 
+            rgba(255, 255, 255, 0.432));
+    opacity: .9;
+}
+
+.site-description::after 
+{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: var(--separator-thickness);
+    background: 
+            linear-gradient(var(--header-main-color-up), 
+            var(--header-main-color-down));
+}
+
+.site-description .wrapper 
+{
+    max-width: 1200px;
+    width: 100%;
+    padding: 75px 60px 80px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.575);
+    border-radius: 30% / 25%;
+    position: relative;
+}
+
+.site-description .wrapper .title 
+{
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 4em;
+    word-wrap: break-word;
+    color: rgb(221, 255, 255);
+    --text-border-width: 2px;
+    --text-border-color: rgba(0, 0, 0, 0.295);
+    text-shadow: 
+            1px 0 5px var(--text-border-color),
+            1px 0 8px var(--text-border-color),
+            1px 0 11px var(--text-border-color),
+            1px 0 14px var(--text-border-color);
+}
+
+.site-description .wrapper .content 
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.site-description .wrapper .content .img-and-link 
+{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.site-description .wrapper .content .img-and-link .img-wrapper 
+{
+    width: 80%;
+    overflow: hidden;
+    border: var(--offset) solid var(--header-main-color-down);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 
+            inset 0 0 20px rgba(0, 0, 0, 0.993), 
+            3px 4px 20px rgba(0, 0, 0, 0.63);
+}
+
+.site-description .wrapper .content .img-and-link .img-wrapper img 
+{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    position: relative;
+}
+.site-description .wrapper .content .img-and-link .btn 
+{
+    box-sizing: border-box;
+    max-width: 84%;
+    width: 100%;
+    --normal-size: 1.5em;
+    --height: calc(3 * var(--normal-size));
+    max-height: var(--height);
+    height: var(--height);
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    background: var(--header-edge-color);
+    margin-top: 15px;
+    border-radius: calc(0.5 * var(--height)) / 50%; 
+    --lower-hull: rgba(0, 0, 0, 0.466);
+    --upper-hull: rgba(0, 0, 0, 0.274);
+    box-shadow: 
+            inset -1px -1px 2px var(--lower-hull), 
+            inset -1px -1px 8px var(--lower-hull), 
+            inset -4px -4px 16px var(--lower-hull), 
+            inset 1px 1px 4px var(--upper-hull), 
+            5px 6px 10px rgba(0, 0, 0, 0.452);  
+}
+
+.site-description .wrapper .content .img-and-link .btn a 
+{
+    text-decoration: none;
+    color: white;
+    font-size: var(--normal-size);
+    font-weight: 600;
+    text-shadow: 
+            1px 1px 1px var(--lower-hull), 
+            2px 3px 2px var(--lower-hull), 
+            -1px -1px 2px var(--lower-hull);
+    transition: all .15s ease-in-out;
+}
+
+.site-description .wrapper .content .img-and-link .btn:hover a 
+{
+    font-size: calc(1.2 * var(--normal-size));
+}
+
+.site-description .wrapper .content .text 
+{
+    width: 60%;
+    color: white;
+    font-size: 1.6em;
+    font-weight: bold;
+    text-indent: 50px;
+    font-family: var(--header-font);
+}
+
+.site-description .wrapper .content .text p 
+{
+    --lower-hull: black;
+    --neon-effect: rgba(0, 0, 0, 0.658);
+    text-shadow: 
+            0px -1px 1px var(--lower-hull), 
+            -1px 0px 0px var(--lower-hull), 
+            2px 0px 0px var(--lower-hull), 
+            2px 3px 5px var(--neon-effect), 
+            2px 3px 10px var(--neon-effect), 
+            2px 3px 20px var(--neon-effect);
+}
+
+.site-description .wrapper .content .text p:first-child
+{
+    margin-bottom: 20px;
+}
+
+.ppp
+{
+    width: 100%;
+    height: 400px;
+}

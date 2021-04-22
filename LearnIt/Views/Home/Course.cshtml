@@ -1,0 +1,156 @@
+﻿@using LearnIt.DateFormater
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<UserDataModel> SignInManager
+@inject UserManager<UserDataModel> UserManager
+
+@{
+    ViewData["Title"] = ViewBag.Course.Name;
+}
+
+@section CourseCss
+{
+    <link href="@Url.Content("~/css/course.css")" rel="stylesheet" type="text/css" />
+    <style>
+        .course-title::after
+        {
+            background-image: url("@ViewBag.Course.CourseImageLink");
+        }
+    </style>
+}
+
+<section class="course-title first-section">
+    <section class="title-wrapper">
+        <h1>
+            @($"{ViewBag.Course.Name}{(ViewBag.Course.StartDate.Year < 2010 ? "" : " - " + DateFormater.Format(ViewBag.Course.StartDate))}")
+        </h1>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            var user = ViewBag.User is null ? ViewData["User"] : ViewBag.User;
+            var userCourses = (List<CourseDataModel>)user.GetCourses();
+            if (userCourses.Where(x => x.Id == ViewBag.Course.Id).Count() == 1)
+            {
+                <span class="add-course">
+                    Already Signed
+                </span>
+            }
+            else
+            {
+                <a class="add-course" asp-area="" asp-controller="Home" asp-action="AddCourse" asp-route-id="@ViewBag.Course.Id">
+                    Add Course
+                </a>
+            }
+        }
+    </section>
+</section>
+
+<section class="course-about">
+    <section class="wrapper">
+        <p>
+            @ViewBag.Course.About
+        </p>
+        @if (ViewBag.Course.StartDate.Year >= 2010)
+        {
+            <p class="date">
+                @($"Start Date: {DateFormater.Format(ViewBag.Course.StartDate)}")
+            </p>
+            <p class="date">
+                @($"End Date: {DateFormater.Format(ViewBag.Course.EndDate)}")
+            </p>
+        }
+    </section>
+</section>
+
+<section class="lectures">
+    <section class="lectures-wrapper">
+        <h1 class="lectures-title">
+            Lectures
+        </h1>
+        <ul class="lectures-main">
+            @if (ViewBag.Lectures.Count == 0)
+            {
+                <h2 class="no-lectures">
+                    There are no lectures to this course!
+                </h2>
+            }
+            else
+            {
+                @for (int i = 0; i < ViewBag.Lectures.Count; i++)
+                {
+                    <li class="lecture">
+                        <h2 class="lecture-name">
+                            <span></span>@ViewBag.Lectures[i].Name
+                            <partial name="_EditDeleteLecturePartial" model="@new KeyValuePair<string, int>(@ViewBag.Course.Id, i)" />
+                        </h2>
+                        <section class="lecture-content" data-height="0">
+                            <section class="lecture-about">
+                                <p>
+                                    <span>Start Date:</span> @DateFormater.Format(ViewBag.Lectures[i].StartDate)
+                                </p>
+                                <p>
+                                    <span>About:</span> @ViewBag.Lectures[i].About
+                                </p>
+                            </section>
+                            <section class="lecture-links">
+                                <h3>
+                                    Lecture's materials
+                                </h3>
+                                <ul>
+                                    @if (ViewBag.Lectures[i].PresentationLink != "")
+                                    {
+                                        <li>
+                                            <a href="@ViewBag.Lectures[i].PresentationLink">Presentation</a>
+                                        </li>
+                                    }
+                                    @if (ViewBag.Lectures[i].ExercisesLink != "")
+                                    {
+                                        <li>
+                                            <a href="@ViewBag.Lectures[i].ExercisesLink">Exercises</a>
+                                        </li>
+                                    }
+                                    @if (ViewBag.Lectures[i].VideoLink != "")
+                                    {
+                                        <li>
+                                            <a asp-area="" asp-controller="Home" asp-action="Video" asp-route-id="@ViewBag.Lectures[i].Id">
+                                                Video
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </section>
+                        </section>
+                    </li>
+                }
+            }
+
+            <partial name="_AddLecturePartial" model="@ViewBag.Course.Id" />
+        </ul>
+
+        <script>
+            var lectures = [...document.querySelectorAll('.lectures .lectures-wrapper .lectures-main .lecture')].map(x => x.children[1]);
+            lectures.forEach(x => x.setAttribute('data-height', x.scrollHeight + 'px'));
+            document.querySelector('.lectures .lectures-wrapper .lectures-main').addEventListener('click', e => {
+                if (e.target.classList.contains('lecture-name')) {
+                    var content = e.target.parentElement.children[1];
+                    if (content.classList.contains('seen')) {
+                        content.style.height = '0px';
+                        content.classList.remove('seen');
+                    } else {
+                        for (var lec of lectures) {
+                            if (lec.classList.contains('seen')) {
+                                lec.style.height = '0px';
+                                lec.classList.remove('seen');
+                            }
+                        }
+                        content.style.height = content.getAttribute('data-height');
+                        content.classList.add('seen');
+                    }
+                }
+            });
+            for (var lec of lectures) {
+                if (lec.classList.contains('seen')) {
+                    lec.classList.remove('seen');
+                }
+            }
+        </script>
+    </section>
+</section>

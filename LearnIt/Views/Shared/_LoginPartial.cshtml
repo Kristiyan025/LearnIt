@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<UserDataModel> SignInManager
+@inject UserManager<UserDataModel> UserManager
+
+@{ 
+    var user = ViewBag.User is null ? ViewData["User"] : ViewBag.User;
+}
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="list-item loged-user-info user-link">
+        <span class="hoverable">
+            <span class="nav-link">
+                @User.Identity.Name
+            </span>
+            <span class="pic inset-shadow" style="--shadow-thickness: 5px">
+                @if (user.ImageLink is null)
+                {
+                    <img src="~/images/user.png" alt="Profile Picture" />
+                }
+                else
+                {
+                    <img src="@user.ImageLink" alt="Profile Picture" />
+                }
+            </span>
+        </span>
+        <section class="user-drop-down">
+            <section class="user-content scrollable">
+                <a class="user-info" asp-area="" asp-controller="Home" asp-action="MyInfo">
+                    My Info
+                </a>
+                @{
+                    if (!user.isStudent)
+                    {
+                        <a class="user-info" asp-area="Identity" asp-page="/Account/Register">
+                            Register Another Teacher
+                        </a>
+                    }
+                }
+                <form class="logout-form" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                    <button type="submit" class="user-info">
+                        Log Out
+                    </button>
+                </form>
+            </section>
+        </section>
+     </li>
+}
+else
+{
+    <li class="list-item unloged-user-info">
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">
+            Login In
+        </a>
+    </li>
+    <li class="list-item unloged-user-info">
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">
+            Sign Up
+        </a>
+    </li>
+}
+

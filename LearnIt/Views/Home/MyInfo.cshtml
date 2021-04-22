@@ -1,0 +1,99 @@
+﻿@using LearnIt.DateFormater
+
+@{
+    ViewData["Title"] = "My Info";
+}
+
+@section MyInfoCss{
+    <link href="@Url.Content("~/css/my-info.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/my-courses.css")" rel="stylesheet" type="text/css" />
+}
+
+<section class="about-user">
+    <section class="user-wrapper">
+        <section class="main-info">
+            <section class="img-wrapper inset-shadow">
+                @if (ViewBag.User.ImageLink is null || ViewBag.User.ImageLink == "")
+                {
+                    <img src="~/images/user.png" alt="Profile Picture" />
+                }
+                else
+                {
+                    <img src="@ViewBag.User.ImageLink" alt="Profile Picture" />
+                }
+            </section>
+            <section class="main-content">
+                <p class="info">
+                    <span>Username: </span> @ViewBag.User.UserName
+                </p>
+                <p class="info">
+                    <span>Full Name: </span> @ViewBag.User.FullName
+                </p>
+                <p class="info">
+                    <span>Acts as: </span> @(ViewBag.User.isStudent ? "Student" : "Teacher")
+                </p>
+                <p class="info">
+                    <span>Email: </span> @ViewBag.User.Email
+                </p>
+            </section>
+        </section>
+        @{
+            var missing = "Missing";
+        }
+        <section class="secondary-info">
+            <p class="info">
+                <span>Bio: </span> @(ViewBag.User.Bio is null ? missing : ViewBag.User.Bio)
+            </p>
+            <p class="info">
+                <span>Birth Date: </span> @(ViewBag.User.BirthDate is null || ViewBag.User.BirthDate.Year < 1920 ? missing : DateFormater.Format(ViewBag.User.BirthDate))
+            </p>
+            <p class="info">
+                <span>Country: </span> @(ViewBag.User.Country is null ? missing : ViewBag.User.Country)
+            </p>
+            <p class="info">
+                <span>Facebook Account: </span>
+                @if (ViewBag.User.Facebook is null)
+                {
+                    @missing
+                }
+                else
+                {
+                    <a href="@ViewBag.User.Facebook">
+                        Follow Me
+                    </a>
+                }
+            </p>
+            <p class="info">
+                <span>GitHub Account: </span>
+                @if (ViewBag.User.GitHub is null)
+                {
+                    @missing
+                }
+                else
+                {
+                    <a href="@ViewBag.User.GitHub">
+                        Follow Me
+                    </a>
+                }
+            </p>
+            <p class="info">
+                <span>StackOverflow Account: </span>
+                @if (ViewBag.User.StackOverflow is null)
+                {
+                    @missing
+                }
+                else
+                {
+                    <a href="@ViewBag.User.StackOverflow">
+                        Follow Me
+                    </a>
+                }
+            </p>
+        </section>
+        <a class="edit-info" asp-area="" asp-controller="EditInfo" asp-action="EditInfo">
+            Edit
+        </a>
+    </section>
+</section>
+
+<partial name="UserCourses" />

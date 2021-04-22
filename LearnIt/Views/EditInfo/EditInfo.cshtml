@@ -1,0 +1,102 @@
+﻿@using LearnIt.DateFormater
+
+@model LearnIt.Controllers.EditInfoController.FormModel
+
+@{
+    ViewData["Title"] = "Edit Info";
+    string empty = "";
+}
+
+@section EditInfoCss{
+    <link href="@Url.Content("~/css/form.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/edit-info.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="log-form first-section">
+    <div class="log-form-wrapper">
+        <form action="UpdateInfo" method="post">
+            <h4 class="form-title">
+                Edit Info
+            </h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger all-mistakes"></div>
+            <div class="form-group">
+                <label class="form-label" asp-for="FullName"></label>
+                <input asp-for="FullName" class="form-input" placeholder="Ivan Petrov Todorov"
+                       value="@ViewBag.User.FullName" />
+                <span asp-validation-for="FullName" class="text-danger mistake"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="BirthDate"></label>
+                <input asp-for="BirthDate" class="form-input"
+                       value="@(ViewBag.User.BirthDate is null || ViewBag.User.BirthDate.Year < 1920 ?
+                                    "1900-01-01" : DateFormater.InputStyle(ViewBag.User.BirthDate))" />
+                <span asp-validation-for="BirthDate" class="text-danger mistake"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Gender"></label>
+                <label class="form-label">
+                    <input asp-for="Gender" class="form-input" id="gender" checked />
+                    <span class="gender">
+                        Male
+                    </span>
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Country"></label>
+                <input asp-for="Country" class="form-input" placeholder="Bulgaria"
+                       value="@(ViewBag.User.Country is null ? empty : ViewBag.User.Country)" />
+                <span asp-validation-for="Country" class="text-danger mistake"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="ImageLink"></label>
+                <input asp-for="ImageLink" class="form-input" placeholder="Default Image"
+                       value="@(ViewBag.User.ImageLink is null ? empty : ViewBag.User.ImageLink)" />
+                <span asp-validation-for="ImageLink" class="text-danger mistake"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Bio"></label>
+                <textarea asp-for="Bio" class="form-input txt-area" rows="6" cols="80" placeholder="Enter your autobiography..."
+                    data-text="@(ViewBag.User.Bio is null ? empty : ViewBag.User.Bio)"></textarea>
+                <span asp-validation-for="Bio" class="text-danger mistake"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Facebook"></label>
+                <input asp-for="Facebook" class="form-input" placeholder="https://facebook.com"
+                       value="@(ViewBag.User.Facebook is null ? empty : ViewBag.User.Facebook)" />
+                <span asp-validation-for="Facebook" class="text-danger mistake"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="GitHub"></label>
+                <input asp-for="GitHub" class="form-input" placeholder="https://github.com"
+                       value="@(ViewBag.User.GitHub is null ? empty : ViewBag.User.GitHub)" />
+                <span asp-validation-for="GitHub" class="text-danger mistake"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="StackOverflow"></label>
+                <input asp-for="StackOverflow" class="form-input" placeholder="https://stackoverflow.com"
+                       value="@(ViewBag.User.StackOverflow is null ? empty : ViewBag.User.StackOverflow)" />
+                <span asp-validation-for="StackOverflow" class="text-danger mistake"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                Update Info
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+    var txt = document.querySelector('.txt-area');
+    txt.defaultValue = txt.getAttribute('data-text');
+</script>
+
+<script>
+    var gender = document.querySelector('.gender');
+    document.querySelector('#gender').addEventListener('change', function () {
+        if (this.checked) {
+            gender.innerHTML = 'Male';
+        } else {
+            gender.innerHTML = 'Female';
+        }
+    });
+</script>

@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using LearnIt.DateFormater
+@inject SignInManager<UserDataModel> SignInManager
+@inject UserManager<UserDataModel> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <section class="my-courses">
+        <section class="my-courses-wrapper">
+            <h1>
+                My Courses:
+            </h1>
+            <ul class="my-courses-list">
+                @if(ViewBag.MyCourses.Count == 0)
+                {
+                    <li class="no-courses">
+                        You haven't signed up for any courses yet!
+                    </li>
+                }
+                else foreach (CourseDataModel c in ViewBag.MyCourses)
+                {
+                    <li class="my-course">
+                        <a asp-area="" asp-controller="Home" asp-action="Course" asp-route-id="@c.Id">
+                            @($"{c.Name} - {DateFormater.Format(c.StartDate)}")
+                        </a>
+                    </li>
+                }
+            </ul>
+        </section>
+    </section>
+}

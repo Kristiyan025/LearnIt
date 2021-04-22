@@ -1,0 +1,352 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Newsreader:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+
+/*  Course  */
+
+
+.course-title
+{
+    width: 100%;
+    overflow: hidden;
+}
+
+.course-title::before
+{
+    --percentage: 20%;
+    background-image: url("https://softuni.bg/Content/images/trainings/details-background.png"), linear-gradient(rgba(0, 0, 0, 0.712) 0%, rgba(0, 0, 0, 0)var(--percentage), rgba(0, 0, 0, 0) calc(100% - var(--percentage)),  rgba(0, 0, 0, 0.432) 100%);
+}
+
+.course-title::after
+{
+    content: '';
+    position: absolute;
+    left: 2%;
+    --size: 400px;
+    bottom: calc(-0.3 * var(--size));
+    width: var(--size);
+    height: var(--size);
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    border-radius: 50%;
+    transform: rotateZ(-25deg);
+    opacity: .8;
+    z-index: -2;
+}
+
+.course-title .title-wrapper
+{
+    max-width: 1200px;
+    width: 100%;
+    max-height: 260px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.course-title .title-wrapper h1
+{
+    font-size: 5em;
+    font-family: 'Newsreader';
+    color: white;
+    text-align: center;
+    text-shadow: 
+            2px 3px 6px rgba(0, 0, 0, 0.336), 
+            5px 4px 7px rgba(0, 0, 0, 0.685), 
+            0 0 6px rgba(0, 0, 0, 0.685);
+}
+
+.course-title .title-wrapper .add-course
+{
+    box-sizing: border-box;
+    width: 30%;
+    --height: 2.5em;
+    max-height: var(--height);
+    height: var(--height);
+    padding: 0;
+    margin-top: 20px;
+    font-size: 2em;
+    border-radius: calc(0.5 * var(--height));
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    color: white;
+    background-color: var(--header-edge-color);
+    border: 3px solid white;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .1s ease-out;
+}
+
+.course-title .title-wrapper .add-course:hover
+{
+    color: rgb(31, 53, 247);
+}
+
+.course-about
+{
+    width: 100%;
+    padding: 80px 0;
+    background-color: rgb(245, 221, 177);
+    position: relative;
+}
+
+.course-about::before
+{
+    content: '';
+    position: absolute;
+    height: 15px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, rgb(185 56 9) 0%, rgb(255 129 68) 100%);
+}
+
+.course-about::after
+{
+    content: '';
+    position: absolute;
+    height: 8px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 93, 35, 0.884);
+}
+
+.course-about .wrapper
+{
+    max-width: 1200px;
+    width: 100%;
+    height: 95%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.course-about .wrapper p 
+{
+    width: 100%;
+    text-indent: 50px;
+    line-height: 1.5em;
+    font-size: 25px;
+}
+
+.course-about .wrapper .date
+{
+    text-indent: 25px;
+    font-weight: bold;
+}
+
+.lectures
+{
+    width: 100%;
+}
+
+.lectures .lectures-wrapper
+{
+    max-width: 1200px;
+    width: 100%;
+    padding: 60px 0;
+    margin: 0 auto;
+}
+
+.lectures .lectures-wrapper .lectures-title
+{
+    text-align: center;
+    font-size: 50px;
+}
+
+.lectures .lectures-wrapper  .lectures-main
+{
+    width: 100%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    counter-reset: lecture;
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture
+{
+    width: 70%;
+    margin: 5px 0;
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture .lecture-name
+{
+    --font-size: 1.8em;
+    height: var(--font-size);
+    font-size: var(--font-size);
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: rgb(192, 192, 192);
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 5px;
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture .lecture-name:hover
+{
+    cursor: pointer;
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture .lecture-name::before
+{
+    counter-increment: lecture;
+    content: counter(lecture) '.';
+    --clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    -webkit-clip-path: var(--clip-path);
+    clip-path: var(--clip-path);
+    position: absolute;
+    box-sizing: border-box;
+    width: 60px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 4px;
+    background-color: rgb(32, 58, 129);
+    color: rgb(250, 242, 226);
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture .lecture-name span
+{
+    width: 80px;
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture-content
+{
+    display: flex !important;
+    width: 100%;
+    height: 0;
+    padding: 0;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-size: 20px;
+    overflow: hidden;
+    transition: all .5s ease-in;
+}
+
+.seen
+{
+    padding: 30px 0 20px !important;
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture-content .lecture-about
+{
+    width: 45%;
+    font-size: 1.3em;
+    padding: 25px 30px 0 30px;
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture-content .lecture-about p span
+{
+    font-weight: bold;
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture-content section h3
+{
+    margin-bottom: 10px;
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture-content .lecture-links
+{
+    width: 45%;
+    padding: 10px 0 10px 5%;
+    font-size: 1.3em;
+    border-left: 3px solid rgb(24, 24, 24);
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture-content .lecture-links ul
+{
+    list-style-type: none;
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture-content .lecture-links li
+{
+    margin: 3px 0 3px 15px;
+}
+
+.lectures .lectures-wrapper  .lectures-main .lecture-content .lecture-links li a
+{
+    text-decoration: none;
+    color: rgb(35, 35, 255);
+}
+
+.edit-lecture,
+.delete-lecture .btn-delete
+{
+    position: absolute;
+    --vert-offset: 8px;
+    top: var(--vert-offset);
+    bottom: var(--vert-offset);
+    width: auto;
+    background-color: var(--header-edge-color);
+    padding: 0 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px / 5px;
+    color: white;
+    text-decoration: none;
+}
+
+.edit-lecture
+{
+    right: 120px;
+}
+
+.delete-lecture .btn-delete
+{
+    right: 20px;
+    font-size: 1em;
+    font-family: 'Josefin Sans', sans-serif;
+    border: none;
+}
+
+.add-lecture
+{
+    align-self: flex-start;
+    padding: 8px;
+    margin: 20px 0 0 20%;
+    background-color: var(--header-edge-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px / 5px;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+.edit-lecture:hover,
+.delete-lecture .btn-delete:hover,
+.add-lecture:hover
+{
+    color: rgb(32, 32, 122);
+}
+
+.no-lectures
+{
+    width: 100%;
+    margin-top: 30px;
+    font-family:  'Josefin Sans', sans-serif;
+    font-size: 1.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

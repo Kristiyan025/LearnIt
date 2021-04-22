@@ -1,0 +1,218 @@
+﻿@using LearnIt.DateFormater
+@using LearnIt.Data 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/ico" href="~/images/logo/L.png">
+    <title>@ViewData["Title"] - LearnIt</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/common.css" />
+    <link rel="stylesheet" href="~/css/user.css" />
+    <link rel="stylesheet" href="~/css/responsive.css" />
+    @if (IsSectionDefined("IndexCss"))@RenderSection("IndexCss", required: false)
+    else if (IsSectionDefined("AboutUsCss")) @RenderSection("AboutUsCss", required: false)
+    else if (IsSectionDefined("ContactsCss")) @RenderSection("ContactsCss", required: false)
+    else if (IsSectionDefined("CourseCss")) @RenderSection("CourseCss", required: false)
+    else if (IsSectionDefined("VideoCss")) @RenderSection("VideoCss", required: false)
+    else if (IsSectionDefined("RegisterCss")) @RenderSection("RegisterCss", required: false)
+    else if (IsSectionDefined("LogInCss")) @RenderSection("LogInCss", required: false)
+    else if (IsSectionDefined("MyInfoCss")) @RenderSection("MyInfoCss", required: false)
+    else if (IsSectionDefined("EditInfoCss")) @RenderSection("EditInfoCss", required: false)
+    else if (IsSectionDefined("EditLectureCss")) @RenderSection("EditLectureCss", required: false)
+    else if (IsSectionDefined("AddLectureCss")) @RenderSection("AddLectureCss", required: false)
+    else if (IsSectionDefined("EditCourseCss")) @RenderSection("EditCourseCss", required: false)
+    else if (IsSectionDefined("AddCourseCss")) @RenderSection("AddCourseCss", required: false)
+</head>
+<body>
+    <header class="header" id="courses-menu">
+        <section class="container">
+            <section class="logo">
+                <a asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="/images/logo.png" alt="Logo - Learn It" />
+                </a>
+            </section>
+            <nav class="nav-bar">
+                <ul class="nav-links">
+                    <li class="list-item courses-link">
+                        <span class="nav-link">
+                            Courses
+                        </span>
+                        <section class="courses-drop-down">
+                            <p class="courses-content scrollable">
+                                @{
+                                    List<CourseDataModel> courses = ((List<CourseDataModel>)
+                                        (ViewBag.Courses is null ? ViewData["Courses"] : ViewBag.Courses))
+                                        .OrderByDescending(x => x.StartDate)
+                                        .ToList();
+                                }
+                                @for (int i = 0; i < courses.Count; i++)
+                                {
+                                    <span class="sec-course">
+                                        <a class="course-link" asp-area="" asp-controller="Home" asp-action="Course" asp-route-id="@courses[i].Id">
+                                            @($"{(i + 1):D2}. {courses[i].Name}{(courses[i].StartDate.Year < 2010 ? "" : " - " + DateFormater.Format(courses[i].StartDate))}")
+                                        </a>
+                                        <partial name="_EditDeleteCoursePartial.cshtml" model="courses[i].Id" />
+                                    </span>
+                                }
+                                <partial name="_AddCoursePartial" />
+                            </p>
+                        </section>
+                    </li>
+                    <li class="list-item">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="AboutUs">
+                            About Us
+                        </a>
+                    </li>
+                    <li class="list-item last">
+                        <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Contacts">
+                            Contacts
+                        </a>
+                    </li>
+                    <partial name="_LoginPartial"/>
+                </ul>
+            </nav>
+        </section>
+    </header>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        <section class="wrapper">
+            <ul class="sections">
+                <li class="column">
+                    <h2 class="title">
+                        Pages
+                    </h2>
+                    <ul class="links">
+                        <li class="list-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Index">
+                                Home page
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="#courses-menu">
+                                Courses
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a asp-area="" asp-controller="Home" asp-action="AboutUS">
+                                About Us
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a asp-area="" asp-controller="Home" asp-action="Contacts">
+                                Contacts
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="column">
+                    <h2 class="title">
+                        Community
+                    </h2>
+                    <ul class="links">
+                        <li class="list-item">
+                            <a href="#">
+                                Forum
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="#">
+                                Articles
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="#">
+                                Seminars
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="column">
+                    <h2 class="title">
+                        Recommended
+                    </h2>
+                    <ul class="links">
+                        <li class="list-item">
+                            <a href="https://softuni.bg">
+                                Soft Uni
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="https://cp-algorithms.com">
+                                CP Algorithms
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="https://binarysearch.com/">
+                                Binary Search
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="https://it-kariera.mon.bg/e-learning/login/index.php">
+                                IT Kariera
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="column">
+                    <h2 class="title">
+                        Follow us on :
+                    </h2>
+                    <ul class="links medias">
+                        <li class="list-item">
+                            <a href="#">
+                                <i class="fa fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="#">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="#">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="#">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="#">
+                                <i class="fa fa-pinterest"></i>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="#">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="#">
+                                <i class="fa fa-youtube"></i>
+                            </a>
+                        </li>
+                        <li class="list-item">
+                            <a href="#">
+                                <i class="fa fa-reddit"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <p class="copyrights">
+                &copy; 2021 - 𝕷𝖊𝖆𝖗𝖓 𝕴𝖙<!--<a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>-->
+            </p>
+        </section>
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

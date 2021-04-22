@@ -1,0 +1,40 @@
+﻿@model LearnIt.Controllers.CourseController.FormModel
+
+@{
+    ViewData["Title"] = "Add Course";
+}
+
+@section AddCourseCss{
+    <link href="@Url.Content("~/css/form.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="log-form first-section">
+    <div class="log-form-wrapper">
+        <form asp-controller="Course" asp-action="AddCourseOnPost" method="post">
+            <h4 class="form-title">
+                Add Course
+            </h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger all-mistakes"></div>
+            <div class="form-group">
+                <label class="form-label" asp-for="Name"></label>
+                <input asp-for="Name" class="form-input" placeholder="MVC EF C#" />
+                <span asp-validation-for="Name" class="text-danger mistake"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="CourseImageLink"></label>
+                <input asp-for="CourseImageLink" class="form-input" placeholder="https://softuni.bg" />
+                <span asp-validation-for="CourseImageLink" class="text-danger mistake"></span>
+            </div>
+            <div class="form-group">
+                <label class="form-label" asp-for="About"></label>
+                <textarea asp-for="About" class="form-input txt-area scrollable" rows="6" cols="80" placeholder="Enter a brief description of the course..."></textarea>
+                <span asp-validation-for="About" class="text-danger mistake"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Add Course
+            </button>
+        </form>
+    </div>
+</div>

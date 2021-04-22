@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<UserDataModel> SignInManager
+@inject UserManager<UserDataModel> UserManager
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section IndexCss{
+    <link href="@Url.Content("~/css/index.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/css/my-courses.css")" rel="stylesheet" type="text/css" />
+}
+
+
+<section class="site-description first-section">
+    <section class="wrapper">
+        <h1 class="title">
+            Join today and become a professional in the web industry!
+        </h1>
+        <section class="content">
+            <section class="text">
+                <p>
+                    Our project <span class="learn-it">LearnIt</span> was founded with the idea of ​​an innovative and modern educational center that creates true professionals in the world of programming. For us, as for the entire software industry, real practical skills are most important.
+                </p>
+                <p>
+                    That is why we use the "learning by doing" model, providing our students with programming training combined with real practical experience and knowledge in the most sought after and modern technologies, ready to start their careers as successful software engineers.
+                </p>
+            </section>
+            <div class="img-and-link">
+                <section class="img-wrapper inset-shadow" style="--shadow-thickness: 25px">
+                    <img src="~/images/index/online-courses-tutorials-icon.jpg" alt="Online Learning" />
+                </section>
+                <section class="btn">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <a asp-area="" asp-controller="Home" asp-action="AboutUs">
+                            About Us
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-area="Identity" asp-page="/Account/Register">
+                            Sign Up Now!
+                        </a>
+                    }
+                </section>
+            </div>
+        </section>
+    </section>
+</section>
+
+<partial name="UserCourses" />

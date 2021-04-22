@@ -1,0 +1,93 @@
+﻿
+
+/*  My Info  */
+
+
+.about-user
+{
+    width: 100%;
+}
+
+.about-user .user-wrapper
+{
+    max-width: 1200px;
+    width: 100%;
+    margin: 100px auto 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-user .user-wrapper .info
+{
+    font-size: 2em;
+    margin-bottom: 15px;
+}
+
+.about-user .user-wrapper .info span
+{
+    font-weight: bold;
+}
+
+.about-user .user-wrapper .main-info
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.about-user .user-wrapper .main-info .img-wrapper
+{
+    width: 25%;
+    border-radius: 50%;
+    border: 8px solid var(--header-main-color-down);
+    box-shadow:
+            0 0 20px rgba(0, 0, 0, 0.39);
+}
+
+.about-user .user-wrapper .main-info .img-wrapper img
+{
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+}
+
+.about-user .user-wrapper .secondary-info
+{
+    margin: 30px 0 40px 50px;
+}
+
+.info a
+{
+    color: var(--header-edge-color);
+}
+
+.info a:hover
+{
+    color: rgb(31, 53, 247);
+}
+
+.about-user .user-wrapper .edit-info
+{
+    box-sizing: border-box;
+    width: 20%;
+    --height: 3em;
+    height: var(--height);
+    margin: 0 auto;
+    justify-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--header-edge-color);
+    color: white;
+    font-size: 2.3em;
+    text-decoration: none;
+    border-radius: calc(0.5 * var(--height));
+    transition: color .2s ease-in-out;
+}
+
+.about-user .user-wrapper .edit-info:hover
+{
+    color: rgb(31, 53, 247);
+}

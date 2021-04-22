@@ -1,0 +1,129 @@
+﻿
+
+/*  About Us  */
+
+
+.intro-about-us
+{
+    width: 100%;
+    position: relative;
+    padding: 60px 0 90px;
+    --main-color: rgba(228, 228, 228, 0.308);
+    --shade-length: 15%;
+    background: 
+            url("../images/index/wood.jpg"), 
+            linear-gradient(to top, var(--black-shadow), 
+            var(--main-color) var(--shade-length), 
+            var(--main-color) calc(100% - var(--shade-length)), 
+            var(--black-shadow));
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    background-blend-mode: lighten;
+    background-attachment: fixed;
+    z-index: -2;
+    --shadow-color: rgba(0, 0, 0, 0.637);
+    box-shadow: 
+            inset 0 0 200px var(--shadow-color), 
+            inset 0 80px 160px var(--shadow-color),
+            inset 0 -80px 160px var(--shadow-color);
+}
+
+.intro-about-us .about-us-title 
+{
+    max-width: 400px;
+    width: 100%;
+    margin: 5% auto 0;
+    text-align: center;
+    font-family: 'Akaya Telivigala', cursive;
+    font-size: 5em;
+    color: rgb(226, 226, 226);
+    --text-border-width: 2px;
+    --text-border-color: black;
+    text-shadow: 
+            calc(-1 * var(--text-border-width)) calc(-1 * var(--text-border-width)) 0 var(--text-border-color), 
+            var(--text-border-width) calc(-1 * var(--text-border-width)) 0 var(--text-border-color), 
+            calc(-1 * var(--text-border-width)) var(--text-border-width) 0 var(--text-border-color), 
+            var(--text-border-width) calc(2 * var(--text-border-width)) 0 var(--text-border-color), 
+            3px 5px 10px var(--black-shadow-darker);
+}
+
+.intro-about-us .wrapper 
+{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.intro-about-us .wrapper .img-wrapper
+{
+    width: 50%;
+    border-radius: 
+            50% 50% 61% 39% / 
+            58% 39% 61% 42%;
+    border: var(--offset) solid var(--header-main-color-down);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    box-shadow: 
+            4px 6px 20px var(--black-shadow-darker), 
+            inset 0px 0px 40px 20px var(--black-shadow-darker), 
+            inset -1px -3px 5px var(--black-shadow-darker);
+}
+
+.intro-about-us .wrapper .img-wrapper img 
+{
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.intro-about-us .wrapper .intro-text-wrapper
+{
+    width: 35%;
+    background: linear-gradient(45deg, #3023AE 0%, #f09 100%);
+    background-size: 100% auto, auto;
+    border-radius: 73% 27% 25% 75% / 58% 47% 53% 42%;
+    color: white;
+    font-family: 'RocknRoll One', sans-serif;
+    padding: 50px 50px;
+    position: relative;
+    box-shadow: 
+            4px 6px 20px var(--black-shadow-darker), 
+            inset -2px -1px 5px var(--black-shadow-darker), 
+            inset 1px 2px 5px rgba(255, 255, 255, 0.7), 
+            inset -3px -2px 10px var(--black-shadow-darker), 
+            inset 2px 3px 10px rgba(255, 255, 255, 0.219);
+}
+
+.intro-about-us .wrapper .intro-text-wrapper .intro-text
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: end;
+}
+
+.intro-about-us .wrapper .intro-text-wrapper .intro-text .intro-title
+{
+    max-width: 80%;
+    font-size: 1.8em;
+    margin-bottom: 30px;
+    text-shadow: 2px 3px 10px black;
+}
+
+.intro-about-us .wrapper .intro-text-wrapper .intro-text .intro-info 
+{
+    max-width: 80%;
+    font-size: 1.3em;
+    text-shadow: 1px 2px 5px black;
+}

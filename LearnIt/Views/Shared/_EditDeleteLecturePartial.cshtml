@@ -1,0 +1,23 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<UserDataModel> SignInManager
+@inject UserManager<UserDataModel> UserManager
+@model KeyValuePair<string, int>
+
+@{
+    var user = ViewBag.User is null ? ViewData["User"] : ViewBag.User;
+    string crs = Model.Key;
+    int lec = Model.Value;
+}
+
+@if (SignInManager.IsSignedIn(User) && !user.isStudent &&
+   ((List<CourseDataModel>)ViewBag.MyCourses).Where(x => x.Id == crs).Count() == 1)
+{
+    <a class="edit-lecture" asp-area="" asp-controller="Lecture" asp-action="EditLecture" asp-route-id="@ViewBag.Lectures[lec].Id">
+        Edit
+    </a>
+    <form class="delete-lecture" asp-area="" asp-controller="Lecture" asp-action="DeleteLecture" asp-route-id="@ViewBag.Lectures[lec].Id">
+        <button type="submit" class="btn-delete">
+            Delete
+        </button>
+    </form>
+}

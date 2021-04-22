@@ -1,0 +1,183 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+
+
+/*  Form  */
+
+
+.log-form
+{
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    font-weight: 900;
+}
+
+.log-form::before
+{
+    background-image: 
+            url("../images/user/form-bg.jpg"), 
+            linear-gradient(rgba(0, 0, 0, 0.726), 
+            rgba(0, 0, 0, 0.432));
+    opacity: 1;
+}
+
+.log-form .log-form-wrapper
+{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-form .log-form-wrapper form
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    --blur: 4px;
+    --mistakes-weight: 700;
+}
+
+.log-form .log-form-wrapper h4
+{
+    text-align: center;
+    font-size: 1.8em;
+    text-transform: capitalize;
+}
+
+.log-form .log-form-wrapper form hr
+{
+    width: 100%;
+}
+
+.log-form .log-form-wrapper .all-mistakes
+{
+    font-size: .5em;
+    font-weight: var(--mistakes-weight);
+    color: red;
+    margin-left: 3em;
+    align-self: flex-start;
+}
+
+.log-form .log-form-wrapper .form-group
+{
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    --size: 48%;
+}
+
+.log-form .log-form-wrapper .all-mistakes + .form-group
+{
+    margin-top: 40px;
+}
+
+.log-form .log-form-wrapper .form-group .form-label
+{
+    width: var(--size);
+    font-size: 0.75em;
+}
+
+.log-form .log-form-wrapper .form-group .form-input
+{
+    box-sizing: border-box;
+    max-width: var(--size);
+    width: var(--size);
+    --font-size: .85em;
+    font-size: var(--font-size);
+    --height: 1.4em;
+    /*max-height: var(--height);*/
+    height: var(--height);
+    padding: 4px calc(0.5 * var(--height));
+    background: transparent;
+    border: 2px solid white;
+    outline: none;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    border-radius: calc(0.5 * var(--height));
+    backdrop-filter: blur(var(--blur));
+}
+
+.log-form .log-form-wrapper .form-group .mistake
+{
+    display: block;
+    font-size: .7em;
+    font-weight: var(--mistakes-weight);
+    color: red;
+    text-align: end;
+}
+
+.log-form .log-form-wrapper .form-group .remember-me
+{
+    --size: 30px;
+    width: var(--size);
+    height: var(--size);
+    align-self: flex-start;
+    transform: translateY(0.45em);
+}
+
+.log-form .log-form-wrapper .check
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-form .log-form-wrapper form .btn
+{
+    box-sizing: border-box;
+    width: 50%;
+    margin-top: 20px;
+    background: transparent;
+    --font-size: 1.4em;
+    --height: calc(1.5 * var(--font-size));
+    max-height: var(--height);
+    height: var(--height);
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: calc(0.5 * var(--height));
+    border: 2px solid white; 
+    outline: none;
+    color: white;
+    font-size: var(--font-size);
+    font-family: 'Poppins', sans-serif;
+    transition: color .2s ease-in-out;
+    backdrop-filter: blur(var(--blur));
+}
+
+.log-form .log-form-wrapper form .btn:hover
+{
+    color: rgb(31, 233, 247);
+}
+
+.go-to-register a,
+.go-to-register a:link,
+.go-to-register a:any-link,
+.go-to-register a:active,
+.go-to-register a:focus,
+.go-to-register a:target,
+.go-to-register a:visited
+{
+    color: white;
+}
+
+.txt-area
+{
+    resize: none;
+    height: 6.4em !important;
+}
+
+.txt-area::-webkit-scrollbar 
+{
+    transform: translateX(-10px);
+}
