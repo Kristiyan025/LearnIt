@@ -8,6 +8,7 @@
     using LearnIt.Models;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
+    using DatabasePopulator;
 
     public class HomeController : Controller
     {
@@ -22,6 +23,8 @@
 
         public void BuildViewBag()
         {
+            _context.Courses.Load();
+            _context.Users.Load();
             ViewBag.Courses = _context.Courses.ToList();
             var user = _context.Users
                 .Where(x => x.UserName == this.User.Identity.Name)
@@ -51,6 +54,7 @@
         public IActionResult Course(string id)
         {
             BuildViewBag();
+            _context.Courses.Load();
             var course = _context.Courses
                 .Where(x => x.Id == id)
                 .Include(x => x.Lectures)
@@ -94,6 +98,7 @@
                 .Include(x => x.Lectures)
                 .FirstOrDefault();
             ViewBag.Course = course;
+            _context.Lectures.Load();
             ViewBag.Lectures = course.Lectures
                 .OrderBy(x => x.StartDate)
                 .ToList();
@@ -118,6 +123,7 @@
         public IActionResult Video(string id)
         {
             BuildViewBag();
+            _context.Lectures.Load();
             var lecture = _context.Lectures
                 .Where(x => x.Id == id)
                 .Include(x => x.Course)

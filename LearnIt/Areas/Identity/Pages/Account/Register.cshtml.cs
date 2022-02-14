@@ -119,7 +119,7 @@
                     Email = Input.Email,
                     ///Change isStudent to false to create one teacher at the start, 
                     ///then change it back to !isTeacher
-                    isStudent = !isTeacher //false
+                    isStudent = !isTeacher //false//
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)

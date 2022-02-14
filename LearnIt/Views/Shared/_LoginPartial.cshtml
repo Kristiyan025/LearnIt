@@ -1,8 +1,9 @@
 ﻿@using Microsoft.AspNetCore.Identity
+@using LearnIt.Models
 @inject SignInManager<UserDataModel> SignInManager
 @inject UserManager<UserDataModel> UserManager
 
-@{ 
+@{
     var user = ViewBag.User is null ? ViewData["User"] : ViewBag.User;
 }
 
@@ -44,7 +45,7 @@
                 </form>
             </section>
         </section>
-     </li>
+    </li>
 }
 else
 {
