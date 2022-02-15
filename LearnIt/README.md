@@ -25,11 +25,18 @@ update-database
 4) Go to _Controllers/HomeController.cs_
 and in the method `Index` uncomment: `DatabasePopulator.Populate(_context);`
 to populate the database with courses and lectures, then comment it again.
+![HomeController before change](./wwwroot/images/doc/db-before.png)
+![HomeController after change](./wwwroot/images/doc/db-after.png)
 
-5) Go to _Areas/Identity/Pages/Acount/Register.cshtml/Register.cshtml.cs_
+5) Launch the project in Visual Studio and when the main page has loaded, 
+close the webpage and undo Step 4).
+
+6) Go to _Areas/Identity/Pages/Acount/Register.cshtml/Register.cshtml.cs_
 and in the `OnPostAsync` method change the last property (`!isTeacher`)
 of the `user` object  to `false` to be able to create one teacher 
 at the start, then change it back to `isTeacher`.
+![Register before change](./wwwroot/images/doc/account-before.png)
+![Register after change](./wwwroot/images/doc/account-after.png)
 
-6) Launch the project in Visual Studio and when the main page has loaded, 
-close the webpage and undo Steps 3) and 4) and the project is ready to use.
+7) Launch the project in Visual Studio, go to the _Register_ page, register a teacher, 
+close the webpage and undo Step 6) and the project is ready to use.
